@@ -1,0 +1,114 @@
+#upload-page {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  place-items: center;
+}
+.upload-box {
+  width: 400px;
+  height: 200px;
+  margin-top: 30px;
+  padding: 30px;
+  text-align: center;
+  transition: all 0.5s ease;
+  border-radius: 12px;
+}
+#image-box {
+  width: 300px;
+  height: 500px;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  display: none;
+}
+
+#imagePreview {
+  margin: 0 auto;
+  max-width: 85%;
+  height: auto;
+}
+.upload-box:hover {
+  background-color: #8e1616;
+  transform: scale(1.05);
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-submit {
+  display: inline-block;
+  width: 200px;
+  background-color: #212229;
+  color: #ffffff;
+  padding: 12px 0px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Giúp hiệu ứng hover mượt mà */
+  box-shadow: 0 4px 6px rgba(51, 104, 160, 0.2); /* Đổ bóng nhẹ */
+}
+
+.btn-submit:hover {
+  width: 300px;
+  transform: translateY(-2px); /* Nút hơi nhô lên */
+  box-shadow: 0 6px 12px rgba(51, 104, 160, 0.3); /* Bóng đổ đậm và rộng hơn */
+}
+
+.btn-submit:active {
+  transform: translateY(0); /* Nút lún xuống khi click */
+  box-shadow: 0 2px 4px rgba(51, 104, 160, 0.2);
+}
+
+.hidden-file-input {
+  display: none;
+}
+
+.btn-choose-file {
+  margin-top: 20px;
+  display: inline-block;
+  width: 200px;
+  background-color: #212229;
+  color: #ffffff;
+  padding: 10px 12px;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 10px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 0px solid transparent;
+}
+
+.btn-choose-file:hover {
+  width: 250px;
+  transform: translateY(-3px);
+  border: 1px solid transparent;
+  background-color: #212229;
+}
+
+.home-h1 {
+  font-size: 110px;
+  color: #1a1a1a;
+  margin-top: 70px;
+}
+
+.file-name {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: 200px;
+  color: #1a1a1a; /* Màu đen nhạt (soft black) nhìn sang trọng và đỡ mỏi mắt hơn đen tuyền (#000000) */
+  line-height: 1.6; /* Khoảng cách giữa các dòng */
+  letter-spacing: 0.1px; /* Khoảng cách giữa các chữ cái */
+  margin-bottom: 20px; /* Khoảng cách với đoạn văn tiếp theo */
+}
+.function-name {
+  font-size: 30px !important;
+  color: #1a1a1a;
+}

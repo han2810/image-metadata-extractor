@@ -1,0 +1,90 @@
+.page {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #3368a0;
+  align-items: center;
+}
+.upload-box {
+  width: 400px;
+  height: 250px;
+  margin-top: 30px;
+  text-align: center;
+  border-radius: 8px;
+}
+form {
+  display: flex;
+  flex-direction: column; /* Xếp các phần tử con thành hàng dọc */
+  gap: 10px; /* (Tùy chọn) Tạo khoảng cách giãn cách đều giữ  a các thẻ con */
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-submit {
+  width: 200px;
+  background-color: #464858; /* Màu xanh đậm làm điểm nhấn */
+  color: #ffffff; /* Chữ trắng để đảm bảo độ tương phản */
+  padding: 12px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px; /* Bo góc mềm mại */
+  cursor: pointer;
+  transition: all 0.3s ease; /* Giúp hiệu ứng hover mượt mà */
+  box-shadow: 0 4px 6px rgba(51, 104, 160, 0.2); /* Đổ bóng nhẹ */
+}
+
+.btn-submit:hover {
+  background-color: #212229; /* Màu nền tối đi một chút khi đưa chuột vào */
+  transform: translateY(-2px); /* Nút hơi nhô lên */
+  box-shadow: 0 6px 12px rgba(51, 104, 160, 0.3); /* Bóng đổ đậm và rộng hơn */
+}
+
+.btn-submit:active {
+  transform: translateY(0); /* Nút lún xuống khi click */
+  box-shadow: 0 2px 4px rgba(51, 104, 160, 0.2);
+}
+
+/* Ẩn input file mặc định */
+.hidden-file-input {
+  display: none;
+}
+
+.btn-choose-file {
+  margin-bottom: 10px;
+  margin-top: 50px;
+  display: inline-block;
+  background-color: #f2efe7;
+  color: #3368a0;
+  border: 2px solid #66a3bf;
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.btn-choose-file:hover {
+  background-color: #2e2f38;
+  border-color: #c8dfdb;
+  color: #ffffff;
+}
+
+.home-h1 {
+  font-size: 50px;
+  color: #0f3040;
+  margin-top: 70px;
+}
+
+.file-name {
+  font-size: 20px;
+  font-weight: 200px;
+  color: #1a1a1a;
+  line-height: 1.6; /* Khoảng cách giữa các dòng */
+  letter-spacing: 0.1px; /* Khoảng cách giữa các chữ cái */
+  margin-bottom: 20px; /* Khoảng cách với đoạn văn tiếp theo */
+}

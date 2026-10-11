@@ -1,0 +1,23 @@
+.result-box {
+  justify-content: center;
+  width: 300px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 8px;
+  transition: all 0.5s ease;
+}
+
+.result-box:hover {
+  background-color: #8e1616;
+}
+h2 {
+  color: #000000;
+}
+
+.title,
+.content {
+  color: #050f18;
+  white-space: nowrap; /* Ép chữ nằm trên 1 dòng duy nhất */
+  overflow: hidden; /* Giấu đi phần chữ bị tràn ra ngoài */
+  text-overflow: ellipsis; /* Hiển thị dấu ... ở chỗ bị giấu */
+}

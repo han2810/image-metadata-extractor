@@ -1,0 +1,50 @@
+from Utility.HexToDec import hexToDec
+from Utility.tagIDTable import tags
+from Utility.tagIDTable import type_size
+from Utility.ReverseByte import reverseByte
+from Utility.extractValue import extractValue
+from Utility.extractEXIFIFD import extractEXIFIFD
+from Utility.extractGPSIFD import extractGPSIFD
+
+def extractEntryCount(ifd_pos, byte_order, data):
+    hex_entry_count = data[ifd_pos: ifd_pos + 4] # 2 byte cho so luong
+    entry_count = hexToDec(hex_entry_count, byte_order)
+    return entry_count
+
+def extractIFDEntry(entry_pos, data, byte_order, tiff_header_pos,IFD0_entries):
+    tagID = data[entry_pos: entry_pos + 4]
+    if byte_order == "4949":
+        tagID = reverseByte(tagID)
+    tagID = tagID.upper()
+    tagIDName = tags["IFD0"].get(tagID)
+    if (tagIDName): 
+        tagIDName = tagIDName.get("name")
+    else: return {"name": tagIDName, "value": "Unknown" }
+    hex_type_entry = data[entry_pos + 4: entry_pos + 8]
+    entry_type = hexToDec(hex_type_entry,byte_order)
+    hex_count = data[entry_pos + 8: entry_pos + 16]
+    count = hexToDec(hex_count, byte_order)
+    entry_size = type_size.get(entry_type) * count
+    entry_data = data[entry_pos + 16: entry_pos + 24]
+    entry_data_pos = entry_pos + 16
+    entry_value = extractValue(data,entry_data_pos ,entry_size, entry_data, entry_type, tiff_header_pos,byte_order, count)
+    if tagID == "8769": 
+        offset_to_exififd = tiff_header_pos + (entry_value * 2)
+        EXIFIFD_entries = extractEXIFIFD(offset_to_exififd, byte_order, data, tiff_header_pos)
+        IFD0_entries.extend(EXIFIFD_entries)
+    elif tagID == "8825":
+        offset_to_gpsifd = tiff_header_pos + (entry_value * 2)
+        GPSIFD_entries = extractGPSIFD(offset_to_gpsifd, byte_order, data, tiff_header_pos)
+        IFD0_entries.extend(GPSIFD_entries)
+    return {"name":tagIDName, "entry_size":entry_size, "value":entry_value, "entry_type":entry_type, "entry_count":count, "byte_order":byte_order}  
+
+def extractIFD(ifd_pos, byte_order, data, tiff_header_pos):
+    entry_count = extractEntryCount(ifd_pos, byte_order,data)
+    IFD0_entries = []
+    entry_pos = ifd_pos + 4
+    for i in range(entry_count):
+        IFD0_entries.append(extractIFDEntry(entry_pos,data,byte_order, tiff_header_pos, IFD0_entries))
+        entry_pos += 24
+    return IFD0_entries
+    
+    
